@@ -114,6 +114,11 @@ namespace JugaadInc
                         PauseGame();
                     }
 
+                    if (Keyboard.current.fKey.wasPressedThisFrame)
+                    {
+                        ToggleCraftingUI();
+                    }
+
                     if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)
                     {
                         AttemptCraft();
@@ -305,6 +310,17 @@ namespace JugaadInc
             GUI.Label(new Rect(Screen.width - 225, 48, 200, 26), $"SCORE: {TotalPoints}", scoreValueStyle);
         }
 
+        private bool showCraftingUI = false;
+
+        public void ToggleCraftingUI()
+        {
+            showCraftingUI = !showCraftingUI;
+            if (showCraftingUI)
+            {
+                ShowNotification("Crafting Bench Opened (Press F or click button to close)", new Color(0.4f, 1f, 0.5f));
+            }
+        }
+
         private void DrawInventoryBar()
         {
             float panelWidth = Mathf.Min(780, Screen.width - 32);
@@ -314,7 +330,13 @@ namespace JugaadInc
             inventoryBarAreaRect = new Rect(startX, startY, panelWidth, panelHeight);
 
             GUI.Box(inventoryBarAreaRect, GUIContent.none);
-            GUI.Label(new Rect(startX + 16, startY + 8, panelWidth - 32, 24), $"INVENTORY ({inventorySystem.Count}/{inventorySystem.MaxCapacity}) — Drag or Click item to Craft", headingStyle);
+            GUI.Label(new Rect(startX + 16, startY + 8, panelWidth - 240, 24), $"INVENTORY ({inventorySystem.Count}/{inventorySystem.MaxCapacity})", headingStyle);
+
+            string toggleText = showCraftingUI ? "CLOSE BENCH (F)" : "CRAFTING BENCH (F)";
+            if (GUI.Button(new Rect(startX + panelWidth - 210, startY + 5, 195, 30), toggleText, buttonStyle))
+            {
+                ToggleCraftingUI();
+            }
 
             float slotSize = 64;
             float padding = 10;
@@ -347,6 +369,7 @@ namespace JugaadInc
 
                     if (GUI.Button(slotRect, new GUIContent("", item.Data.DisplayName)))
                     {
+                        if (!showCraftingUI) showCraftingUI = true;
                         QuickTransferInventoryToCrafting(i);
                     }
 
@@ -367,6 +390,12 @@ namespace JugaadInc
 
         private void DrawCraftingInterface()
         {
+            if (!showCraftingUI)
+            {
+                craftingBenchAreaRect = Rect.zero;
+                return;
+            }
+
             float width = 480;
             float height = 180;
             float startX = (Screen.width - width) / 2f;
