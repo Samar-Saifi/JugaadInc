@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: NewScenarioObjective
+  m_EditorClassIdentifier: Assembly-CSharp:JugaadInc:ScenarioObjective
+  ObjectiveId: objective_build_bicycle
+  Title: Build a Engine
+  Description: Scavenge the yard to find items and build a working bicycle. Why buy
+    transportation when you can Jugaad it?
+  TargetTimeSeconds: 120
+  ValidRecipes:
+  - {fileID: 11400000, guid: 17b07b44c6b9df3e7b3d14d91fe5570f, type: 2}

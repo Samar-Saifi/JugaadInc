@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207ac7956a8f7a467a2648cb9e8abba1, type: 3}
+  m_Name: NewCraftingRecipe
+  m_EditorClassIdentifier: 
+  RecipeId: recipe_id
+  ResultName: Bicycle
+  TargetObjectiveId: objective_build_bicycle
+  ResultItem: {fileID: 11400000, guid: 343141e26afdbbe62ba8113be52c25c9, type: 2}
+  Quality: 1
+  Ingredients:
+  - SpecificItem: {fileID: 11400000, guid: 3d371efa7c3e5b349afd4084b9a20080, type: 2}
+    RequiredCategory: 0
+    MustMatchSpecificItem: 0
+    Count: 0
+  - SpecificItem: {fileID: 11400000, guid: 232fdbbaa04129f028d4b714bf0a83ac, type: 2}
+    RequiredCategory: 0
+    MustMatchSpecificItem: 0
+    Count: 0
+  BaseEfficiencyScore: 80
+  BaseCreativityScore: 85
+  SuccessMessage: Engineering principles were violated, but the bicycle works!
